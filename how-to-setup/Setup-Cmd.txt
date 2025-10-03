@@ -1,0 +1,43 @@
+
+Running Prometheus & Grafana in Docker Desktop
+Running .Net Application on local machine
+
+
+
+Pre-Req:
+---------------------------------------------------
+Install the package for .NET for Prometheus
+
+	dotnet add package prometheus-net.AspNetCore
+
+
+1. build and run dotnet project to be monitor (separately from docker)
+----------------------------------------------------------------------
+	dotnet clean
+	dotnet build
+	dotnet run
+
+
+2. execute docker compose for Prometheus and Grafana
+----------------------------------------------------------------------
+	docker-compose up -d
+
+
+3. configure Prometheus in Grafana
+----------------------------------------------------------------------
+Add new DataSource for Prometheus in Grafana
+	login to Grafana
+		http://localhost:3000
+	
+	from Sidemenu, goto -> 
+		Connections -> Add new connection -> Add Prometheus
+	
+	if you are using from docker image, then Prometheus URL = http://host.docker.internal:9090
+	because Grafana backend server accessing it.
+
+
+
+
+Grafana Credentails
+User: admin
+Pass: admin	( Google@1234 )
